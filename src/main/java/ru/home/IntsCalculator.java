@@ -2,10 +2,15 @@ package ru.home;
 
 public class IntsCalculator implements Ints {
 
-    Calculator calculator = new Calculator();
+    protected final Calculator target;
+
+    public IntsCalculator() {
+        this.target = new Calculator();
+    }
+
     @Override
     public int sum(int arg0, int arg1) {
-        double result =  calculator.newFormula()
+        double result = target.newFormula()
                 .addOperand(arg0)
                 .addOperand(arg1)
                 .calculate(Calculator.Operation.SUM).result;
@@ -14,7 +19,7 @@ public class IntsCalculator implements Ints {
 
     @Override
     public int mult(int arg0, int arg1) {
-        double result =  calculator.newFormula()
+        double result = target.newFormula()
                 .addOperand(arg0)
                 .addOperand(arg1)
                 .calculate(Calculator.Operation.MULT).result;
@@ -23,7 +28,7 @@ public class IntsCalculator implements Ints {
 
     @Override
     public int pow(int a, int b) {
-        double result =  calculator.newFormula()
+        double result = target.newFormula()
                 .addOperand(a)
                 .addOperand(b)
                 .calculate(Calculator.Operation.POW).result;
